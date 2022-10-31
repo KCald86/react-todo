@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import AuthProvider from './contexts/AuthContext';
+import Navigation from './Components/Navigation';
+import NotFound from './Components/NotFound'
+import Footer from './Components/Footer';
+import Login from './Components/Auth/Login'
+import Todos from './Components/Todos/Todos';
+import Categories from './Components/Categories/Categories'
+import ProtectedRoute from './Components/ProtectedRoute'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AuthProvider>
+        <Router>
+          <Navigation />
+          <Routes>
+            <Route path='/' element={<ProtectedRoute><Todos /></ProtectedRoute>} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/categories' element={<ProtectedRoute><Categories /></ProtectedRoute>} />
+            <Route path='/todos' element={<ProtectedRoute><Todos /></ProtectedRoute>} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </AuthProvider>
     </div>
   );
 }

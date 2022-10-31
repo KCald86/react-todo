@@ -1,0 +1,70 @@
+section.todos {
+    /* background-image: url('../../images/background.jpg'); */
+    background-size: 100%;
+    min-height: 78vh;
+    background-color: black;
+}
+
+section.todos article.todoGallery {
+    padding: 2em 0 4em;
+}
+
+/* Below we will style our todo tiles */
+article.todoGallery div.singleTodo {
+    background-color: rgba(200, 200, 200, .9);
+    border-radius: 5px;
+    /* margin: 0%; */
+    text-align: center;
+    border: 2px solid #212529;
+    /* Below we set position: relative; to later position our edit & delte buttons absolutely.
+    When we choose an abosolute position for edit & delete buttons, they will be relative to
+    this dive.singleTodo */
+    position: relative;
+    padding: 0 0 2em;
+    height: 15em;
+}
+
+div.singleTodo h3 {
+    background-color: rgb(23, 162, 184);
+    padding: .5em 0;
+    border-bottom: 4px solid #212529;
+    color: #212529;
+}
+
+div.singleTodo p {
+    padding: 1em;
+}
+
+.singleTodo button {
+    position: absolute;
+    font-size: 1.2em;
+    top: .5em;
+    background: none;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    transition: .25s
+}
+
+.singleTodo button#editLink { 
+    left: .5em;
+}
+
+.singleTodo button#deleteLink {
+    right: .5em;
+}
+
+button#editLink:hover, button#deleteLink:hover {
+    background-color: rgb(200, 200, 200, .95);
+    color: rgb(144, 45, 20);
+    border-color: rgb(144, 45, 20);
+} 
+
+
+@media screen and (max-width: 1023px) {
+
+    section.Todos {
+        background-size: 200%;
+    }
+
+}
